@@ -279,16 +279,29 @@ function morge2(arr1, arr2) {
 // ]);
 
 // convert numbers to words
-function numberToText (n) {
+function numberToText(n) {
 
     var num = "Zero One Two Three Four Five Six Seven Eight Nine Ten Eleven Twelve Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen".split(" ");
     var tens = "Twenty Thirty Forty Fifty Sixty Seventy Eighty Ninety".split(" ");
 
 
-        if (n < 20) return num[n];
-        var digit = n%10;
-        if (n < 100) return tens[~~(n/10)-2] + (digit? " "+  num[digit]: "");
-        if (n < 1000) return num[~~(n/100)] +" Hundred" + (n%100 === 0? "": " " +  numberToText(n%100));
-        return  numberToText(~~(n/1000)) + " Thousand" + (n%1000 !== 0? " " +  numberToText(n%1000): "");
+    if (n < 20) return num[n];
+    var digit = n % 10;
+    if (n < 100) return tens[~~(n / 10) - 2] + (digit ? " " + num[digit] : "");
+    if (n < 1000) return num[~~(n / 100)] + " Hundred" + (n % 100 === 0 ? "" : " " + numberToText(n % 100));
+    return numberToText(~~(n / 1000)) + " Thousand" + (n % 1000 !== 0 ? " " + numberToText(n % 1000) : "");
+
+}
+
+const nemo = ['nemo']
+
+function findNemo(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === "nemo") {
+            console.log(" found nemo !")
+        }
 
     }
+}
+
+findNemo(nemo);
