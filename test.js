@@ -254,31 +254,31 @@ function morge2(arr1, arr2) {
     }
     return result;
 }
-morge2([
-    13457,
-    14765,
-    16030,
-    16651,
-    21540,
-    26357,
-    37635,
-    48419,
-    81250,
-    98476
-], [
-    15551,
-    16299,
-    27598,
-    43521,
-    67371,
-    68940,
-    69004,
-    75686,
-    75899,
-    81978
-]);
+// morge2([
+//     13457,
+//     14765,
+//     16030,
+//     16651,
+//     21540,
+//     26357,
+//     37635,
+//     48419,
+//     81250,
+//     98476
+// ], [
+//     15551,
+//     16299,
+//     27598,
+//     43521,
+//     67371,
+//     68940,
+//     69004,
+//     75686,
+//     75899,
+//     81978
+// ]);
 
-// convert numbers to words 
+// convert numbers to words
 function numberToText (n) {
 
     var num = "Zero One Two Three Four Five Six Seven Eight Nine Ten Eleven Twelve Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen".split(" ");
