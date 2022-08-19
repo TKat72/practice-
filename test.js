@@ -314,3 +314,17 @@ findNemo(large);
 // Explanation: Choosing {3,7} will make the new array [5,5,5,2,2] which has size 5 (i.e equal to half of the size of the old array).
 // Possible sets of size 2 are {3,5},{3,2},{5,2}.
 // Choosing set {2,7} is not possible as it will make the new array [3,3,3,3,5,5,5] which has a size greater than half of the size of the old array.
+var minSetSize = function(arr) {
+    let freq = {}
+    for(let val of arr){
+        if(freq[val])    freq[val] += 1
+        else    freq[val] = 1
+    }
+    let freq_arr = Object.values(freq).sort((a, b) => a-b)
+    let j = freq_arr.length-1, removed = 0, removed_freq = 0, half = ~~arr.length/2
+    while(removed_freq < half){
+        removed += 1
+        removed_freq += freq_arr[j--]
+    }
+    return removed
+};
