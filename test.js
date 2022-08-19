@@ -362,3 +362,33 @@ var reverse = function(x) {
 //   nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
 //   The distinct triplets are [-1,0,1] and [-1,-1,2].
 //   Notice that the order of the output and the order of the triplets does not matter.
+
+
+var threeSum = function(nums) {
+    nums.sort((a,b) => a-b);
+    let left = 0, right = nums.length - 1, output = [];
+
+    while(left <= right) {
+        // If previous element's 3sum was already computed
+        if(left > 0 && nums[left] === nums[left - 1]) {
+            left++;
+            continue;
+        }
+        let innerLeft = left + 1, innerRight = nums.length - 1;
+        while(innerLeft < innerRight) {
+            // If previous element's 2sum was already computed
+            if(innerLeft > left + 1 && nums[innerLeft] === nums[innerLeft - 1]) {
+                innerLeft++;
+                continue;
+            }
+            let sum = nums[innerLeft] + nums[innerRight];
+            if(sum === 0 - nums[left]) output.push([nums[left], nums[innerLeft], nums[innerRight]]);
+
+            if(sum <= 0 - nums[left]) innerLeft++;
+            else innerRight--;
+        }
+        left++;
+    }
+
+    return output;
+};
