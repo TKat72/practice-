@@ -293,15 +293,24 @@ function numberToText(n) {
 
 }
 
-const nemo = ['nemo']
-
+const nemo = ['nemo', "ffff", "jncfjencj", "ekfnejrnv", "jvnceifnv"]
+const large = new Array(100000).fill('nemo')
 function findNemo(arr) {
+    let t0 = performance.now()
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] === "nemo") {
             console.log(" found nemo !")
         }
 
     }
+    let t1 = performance.now()
+    console.log("Took " + (t1 - t0) + "mils")
 }
 
-findNemo(nemo);
+findNemo(large);
+
+// Input: arr = [3,3,3,3,5,5,5,2,2,7]
+// Output: 2
+// Explanation: Choosing {3,7} will make the new array [5,5,5,2,2] which has size 5 (i.e equal to half of the size of the old array).
+// Possible sets of size 2 are {3,5},{3,2},{5,2}.
+// Choosing set {2,7} is not possible as it will make the new array [3,3,3,3,5,5,5] which has a size greater than half of the size of the old array.
