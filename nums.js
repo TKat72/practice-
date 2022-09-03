@@ -57,3 +57,24 @@ function ListNode(val, next) {
 
     return additionNode.next;
   };
+
+  var reverse = function(x) {
+    let reversedNum = x.toString().split('').reverse();
+    let first = false;
+    for(let i = 0; i < reversedNum.length; i++) {
+
+	// if x < 0 which means the last element of revesed array is '-'
+        if(reversedNum[reversedNum.length -1] === '-') {
+            first = true;
+            reversedNum.pop();
+        }
+
+	//if the last number of x (first element of revesed array) is 0
+        if(reversedNum[0] === 0) {
+            reversedNum.shift();
+        }
+    }
+    const final = (first === true) ? -Number(reversedNum.join('')) : Number(reversedNum.join(''));
+    return (final <= (Math.pow(2, 31) -1) && final >= -(Math.pow(2, 31))) ? final: 0;
+
+};
