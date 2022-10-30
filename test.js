@@ -314,15 +314,15 @@ findNemo(large);
 // Explanation: Choosing {3,7} will make the new array [5,5,5,2,2] which has size 5 (i.e equal to half of the size of the old array).
 // Possible sets of size 2 are {3,5},{3,2},{5,2}.
 // Choosing set {2,7} is not possible as it will make the new array [3,3,3,3,5,5,5] which has a size greater than half of the size of the old array.
-var minSetSize = function(arr) {
+var minSetSize = function (arr) {
     let freq = {}
-    for(let val of arr){
-        if(freq[val])    freq[val] += 1
-        else    freq[val] = 1
+    for (let val of arr) {
+        if (freq[val]) freq[val] += 1
+        else freq[val] = 1
     }
-    let freq_arr = Object.values(freq).sort((a, b) => a-b)
-    let j = freq_arr.length-1, removed = 0, removed_freq = 0, half = ~~arr.length/2
-    while(removed_freq < half){
+    let freq_arr = Object.values(freq).sort((a, b) => a - b)
+    let j = freq_arr.length - 1, removed = 0, removed_freq = 0, half = ~~arr.length / 2
+    while (removed_freq < half) {
         removed += 1
         removed_freq += freq_arr[j--]
     }
@@ -341,11 +341,11 @@ var minSetSize = function(arr) {
 // Input: x = 123
 // Output: 321
 
-var reverse = function(x) {
-    let result = x<0 ?  -1*parseInt(x.toString().split("").reverse().join("")) : parseInt(x.toString().split("").reverse().join(""));
-    if((result>Math.pow(2,31)-1) || result<Math.pow(-2,31)) return 0;
+var reverse = function (x) {
+    let result = x < 0 ? -1 * parseInt(x.toString().split("").reverse().join("")) : parseInt(x.toString().split("").reverse().join(""));
+    if ((result > Math.pow(2, 31) - 1) || result < Math.pow(-2, 31)) return 0;
     return result;
-  };
+};
 //   Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
 
 //   Notice that the solution set must not contain duplicate triplets.
@@ -364,27 +364,27 @@ var reverse = function(x) {
 //   Notice that the order of the output and the order of the triplets does not matter.
 
 
-var threeSum = function(nums) {
-    nums.sort((a,b) => a-b);
+var threeSum = function (nums) {
+    nums.sort((a, b) => a - b);
     let left = 0, right = nums.length - 1, output = [];
 
-    while(left <= right) {
+    while (left <= right) {
         // If previous element's 3sum was already computed
-        if(left > 0 && nums[left] === nums[left - 1]) {
+        if (left > 0 && nums[left] === nums[left - 1]) {
             left++;
             continue;
         }
         let innerLeft = left + 1, innerRight = nums.length - 1;
-        while(innerLeft < innerRight) {
+        while (innerLeft < innerRight) {
             // If previous element's 2sum was already computed
-            if(innerLeft > left + 1 && nums[innerLeft] === nums[innerLeft - 1]) {
+            if (innerLeft > left + 1 && nums[innerLeft] === nums[innerLeft - 1]) {
                 innerLeft++;
                 continue;
             }
             let sum = nums[innerLeft] + nums[innerRight];
-            if(sum === 0 - nums[left]) output.push([nums[left], nums[innerLeft], nums[innerRight]]);
+            if (sum === 0 - nums[left]) output.push([nums[left], nums[innerLeft], nums[innerRight]]);
 
-            if(sum <= 0 - nums[left]) innerLeft++;
+            if (sum <= 0 - nums[left]) innerLeft++;
             else innerRight--;
         }
         left++;
@@ -393,29 +393,29 @@ var threeSum = function(nums) {
     return output;
 };
 //add two number array
-function Node(val){
+function Node(val) {
     this.val = val;
     this.next = null;
 };
 
-function LinkedList(){
+function LinkedList() {
     this.head = null;
-    this.insert = function(val){
+    this.insert = function (val) {
         let node = new Node(val);
-        if(this.head === null){
+        if (this.head === null) {
             this.head = node;
-        }else{
+        } else {
             node.next = this.head;
             this.head = node;
         }
     }
 }
 
-var addToArrayForm = function(num, num2) {
+var addToArrayForm = function (num, num2) {
     return String(BigInt(num.join('')) + BigInt(num2.join(''))).split('');
 };
 
-var addTwoNumbers = function(l1, l2) {
+var addTwoNumbers = function (l1, l2) {
     const number1 = [];
     const number2 = [];
     const output = new LinkedList();
@@ -435,9 +435,21 @@ var addTwoNumbers = function(l1, l2) {
 
     const newNumber = addToArrayForm(number1, number2).reverse();
 
-    while(newNumber.length) {
+    while (newNumber.length) {
         output.insert(newNumber.pop());
     }
 
     return output.head;
+};
+//
+var isPalindrome = function (x) {
+    if (x < 0 || x % 10 == 0 && x != 0) {
+        return false;
+    }
+    let t = 0;
+    while (x > t) {
+        t = t * 10 + x % 10;
+        x = Math.floor(x / 10);
+    }
+    return t == x || x == Math.floor(t / 10);
 };
